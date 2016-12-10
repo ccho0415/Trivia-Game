@@ -83,39 +83,10 @@ if (qcounter >= 2){
 	$("#resetButton").show();
 }
 });
-//registering if correct or incorrect!
-$("#a").on("click", function(){
-	var input = $("#a").text().trim();
-	console.log(input);
-	console.log(questions[qcounter].correctAnswer);
-	if(""+input+"" !== ""+ questions[qcounter].correctAnswer +""){
-		console.log("FAIL");
-	}else{
-		console.log("beepboop");
-	}
-});
-$("#b").on("click", function(){
-	var input = $("#b").text().trim();
-		console.log(input);
-	console.log(questions[qcounter].correctAnswer);
-	if(""+input+"" !== ""+ questions[qcounter].correctAnswer +""){
-		console.log("FAIL");
-	}else{
-		console.log("beepboop");
-	}
-});
-$("#c").on("click", function(){
-	var input = $("#c").text().trim();
-		console.log(input);
-	console.log(questions[qcounter].correctAnswer);
-	if(""+input+"" !== ""+ questions[qcounter].correctAnswer +""){
-		console.log("FAIL");
-	}else{
-		console.log("beepboop");
-	}
-});
-$("#d").on("click", function(){
-	var input = $("#d").text().trim();
+//registering if correct or incorrect made it dry! Got an idea from class (use this!!)
+
+$(".choice").on("click", function(){
+	var input = $(this).text().trim();
 		console.log(input);
 	console.log(questions[qcounter].correctAnswer);
 	if(""+input+"" !== ""+ questions[qcounter].correctAnswer +""){
