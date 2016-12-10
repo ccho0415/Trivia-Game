@@ -83,7 +83,7 @@ if (qcounter >= 2){
 	$("#resetButton").show();
 }
 });
-//registering if correct or incorrect made it dry! Got an idea from class (use this!!)
+//registering if correct or incorrect made it dry! Got an idea from class and christian (use class and this!!)
 
 $(".choice").on("click", function(){
 	var input = $(this).text().trim();
