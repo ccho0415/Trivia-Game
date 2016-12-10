@@ -17,26 +17,28 @@ var questions = [{
 ];
 //Question Counter
 var qcounter = 0;
+var timer;
 
 function startTime(){
 //Vars for the Timer
-var count = 5;
+	var count = 5;
 //Countdown!
-var timer = setInterval(time, 1000);
+	var timer = setInterval(time, 1000);
+
+
 //Timer Function
-function time(){
-	count--;
-	$("#timer2").text(count);
+	function time(){
+		count--;
+		$("#timer2").text(count);
 //When we hit 0
-	if (count<=0){
-		clearInterval(timer);
-		console.log("Time's Up!")
-		$("#nextButton").show();
+		if (count<=0){
+			clearInterval(timer);
+			console.log("Time's Up!")
+			$("#nextButton").show();
 		return;
 	}
 }
 };
-
 function currentQ(){
 	i = qcounter
 	$("#question").text(questions[i].question);
@@ -78,20 +80,25 @@ $("#nextButton").on("click", function(){
 	qcounter++
 	currentQ();
 //final results
-if (qcounter >= 2){
+if (qcounter > questions.length){
 	$("#finalScore").show();
 	$("#resetButton").show();
 }
 });
 //registering if correct or incorrect made it dry! Got an idea from class and christian (use class and this!!)
 
-$(".choice").on("click", function(){
+$(".choice").on("click", function(event){
 	var input = $(this).text().trim();
 		console.log(input);
 	console.log(questions[qcounter].correctAnswer);
 	if(""+input+"" !== ""+ questions[qcounter].correctAnswer +""){
 		console.log("FAIL");
+			clearInterval(timer);
 	}else{
 		console.log("beepboop");
+				clearInterval(timer);
 	}
 });
+    $("#timetest").on ("click", function(){
+      clearInterval(timer);
+    });
