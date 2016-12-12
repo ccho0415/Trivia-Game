@@ -3,21 +3,26 @@ var questions = [{
 	question: "What is 1*5?",
 	choices: [2,5,10,15],
 	correctAnswer: 5,
-	finished: 0
+	finished: false
 },
 {
 	question: "What is 5*2?",
 	choices: [2,5,10,15],
 	correctAnswer: 10,
-	finished: 0
+	finished: false
 },
 {
 	question: "What is 5*3?",
 	choices: [2,5,10,15],
 	correctAnswer: 15,
-	finished: 0
+	finished: false
 }
 ];
+//random question generator!
+
+var	num ;
+var i ; 
+
 // which question number we are on
 var qcounter= 0;
 //timer functionality
@@ -47,10 +52,9 @@ var timerobj = {
 };
 //what happens when we are on a question
 function currentQ(){
-//random question generator!
- 	num = Math.floor(Math.random()*questions.length);
- 	var i = num;
- 	console.log(i);
+		num = Math.floor(Math.random()*questions.length);
+		i = num;
+
 	$("#question").text(questions[i].question);
 	$("#a").text(questions[i].choices[0]);
 	$("#b").text(questions[i].choices[1]);
@@ -85,18 +89,28 @@ $("#startButton").on("click", function(){
 	currentQ();
 	timerobj.start();
 });
-$("#nextButton").on("click", function(){
+$("#nextButton").on("click", function(event){
+	if (questions[i].finished == true){
+		console.log("already answered this one!")
+		event.preventDefault();
+		currentQ();
+
+	}else{
+			console.log(i);
 	$("#nextButton").hide();
 	timerobj.reset();
 	timerobj.start();
 //figure out where to place this so that the q counter function does not show up early
 	qcounter++
 	currentQ();
+
+	};
+
 //final results
 if (qcounter > questions.length){
 	$("#finalScore").show();
 	$("#resetButton").show();
-}
+};
 });
 //registering if correct or incorrect made it dry! Got an idea from class and christian (use class and this!!)
 
@@ -104,12 +118,16 @@ $(".choice").on("click", function(event){
 	var input = $(this).text().trim();
 		console.log(input);
 	console.log(questions[qcounter].correctAnswer);
-	if(""+input+"" !== ""+ questions[qcounter].correctAnswer +""){
+	if(""+input+"" !== ""+ questions[i].correctAnswer +""){
 		console.log("FAIL");
 			timerobj.stop();
+			questions[i].finished = true;
+			$("#nextButton").show();
 	}else{
 		console.log("beepboop");
 				timerobj.stop();
+				questions[i].finished = true;
+				$("#nextButton").show();
 	}
 });
     $("#timetest").on ("click", function(event){
