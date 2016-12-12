@@ -15,30 +15,53 @@ var questions = [{
 	correctAnswer: 15
 }
 ];
-//Question Counter
-var qcounter = 0;
+var qcounter= 0;
 var timer;
-
-function startTime(){
-//Vars for the Timer
-	var count = 5;
-//Countdown!
-	var timer = setInterval(time, 1000);
-
-
-//Timer Function
-	function time(){
-		count--;
-		$("#timer2").text(count);
-//When we hit 0
-		if (count<=0){
-			clearInterval(timer);
+var timerobj = {
+	time: 5,
+	count: function(){
+		timerobj.time--;
+		$("#timer2").html(timerobj.time);
+		if (timerobj.time<=0){
+			timerobj.stop();
 			console.log("Time's Up!")
 			$("#nextButton").show();
-		return;
+		};
+	},
+	reset: function(){
+		timerobj.time = 5;
+		$("#timer2").html(timerobj.time);
+	},
+	start: function(){
+		timer = setInterval(timerobj.count, 1000);
+	},
+	stop: function(){
+		clearInterval(timer);
 	}
-}
+
 };
+//Question Counter
+// var count = 5;
+// var qcounter = 0;
+
+
+// function startTime(){
+// //Vars for the Timer
+// //Countdown!
+// 	var timer = setInterval(time, 1000);
+
+
+// //Timer Function
+// 	function time(){
+// 		count--;
+// 		$("#timer2").text(count);
+// //When we hit 0
+// 		if (count<=0){
+// 			clearInterval(timer);
+// 			console.log("Time's Up!")
+// 			$("#nextButton").show();	}
+// }
+// };
 function currentQ(){
 	i = qcounter
 	$("#question").text(questions[i].question);
@@ -46,6 +69,7 @@ function currentQ(){
 	$("#b").text(questions[i].choices[1]);
 	$("#c").text(questions[i].choices[2]);
 	$("#d").text(questions[i].choices[3]);
+
 };
 $(document).ready(function(){
 // Hiding all the elements from the get go! Don't want them to see the questions
@@ -71,11 +95,12 @@ $("#startButton").on("click", function(){
 	$("#c").show();
 	$("#d").show();
 	currentQ();
-	startTime();
+	timerobj.start();
 });
 $("#nextButton").on("click", function(){
 	$("#nextButton").hide();
-	startTime();
+	timerobj.reset();
+	timerobj.start();
 //figure out where to place this so that the q counter function does not show up early
 	qcounter++
 	currentQ();
@@ -93,12 +118,13 @@ $(".choice").on("click", function(event){
 	console.log(questions[qcounter].correctAnswer);
 	if(""+input+"" !== ""+ questions[qcounter].correctAnswer +""){
 		console.log("FAIL");
-			clearInterval(timer);
+			timerobj.stop();
 	}else{
 		console.log("beepboop");
-				clearInterval(timer);
+				timerobj.stop();
 	}
 });
-    $("#timetest").on ("click", function(){
-      clearInterval(timer);
+    $("#timetest").on ("click", function(event){
+    	console.log("BEEP")
+      timerobj.stop();
     });
