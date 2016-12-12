@@ -90,9 +90,8 @@ $("#startButton").on("click", function(){
 	currentQ();
 	timerobj.start();
 });
-
 $("#nextButton").on("click", function(event){
-	if (finished.indexOf(questions[i].finish) === 0){
+	if (finished.indexOf(questions[i].finish) !== 0){
 	console.log(i);
 	$("#nextButton").hide();
 	timerobj.reset();
@@ -101,9 +100,11 @@ $("#nextButton").on("click", function(event){
 	qcounter++
 	currentQ();
 	}else{
-		console.log("already answered this one!")
+				console.log("already answered this one!")
 		event.preventDefault();
 		currentQ();
+
+
 	};
 
 //final results
@@ -112,7 +113,7 @@ if (qcounter > questions.length){
 	$("#resetButton").show();
 };
 });
-//registering if correct or incorrect made it dry! Got an idea from class and christian (use class and this!!)
+//registering if correct or incorrect; made it dry! Got an idea from christian (use class and this!!)
 
 $(".choice").on("click", function(event){
 	var input = $(this).text().trim();
