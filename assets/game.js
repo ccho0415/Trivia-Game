@@ -15,7 +15,9 @@ var questions = [{
 	correctAnswer: 15
 }
 ];
+// which question number we are on
 var qcounter= 0;
+//timer functionality
 var timer;
 var timerobj = {
 	time: 5,
@@ -40,28 +42,7 @@ var timerobj = {
 	}
 
 };
-//Question Counter
-// var count = 5;
-// var qcounter = 0;
-
-
-// function startTime(){
-// //Vars for the Timer
-// //Countdown!
-// 	var timer = setInterval(time, 1000);
-
-
-// //Timer Function
-// 	function time(){
-// 		count--;
-// 		$("#timer2").text(count);
-// //When we hit 0
-// 		if (count<=0){
-// 			clearInterval(timer);
-// 			console.log("Time's Up!")
-// 			$("#nextButton").show();	}
-// }
-// };
+//what happens when we are on a question
 function currentQ(){
 	i = qcounter
 	$("#question").text(questions[i].question);
@@ -71,6 +52,7 @@ function currentQ(){
 	$("#d").text(questions[i].choices[3]);
 
 };
+// when the document is ready!
 $(document).ready(function(){
 // Hiding all the elements from the get go! Don't want them to see the questions
 	$("#timer1").hide();
