@@ -2,17 +2,20 @@
 var questions = [{
 	question: "What is 1*5?",
 	choices: [2,5,10,15],
-	correctAnswer: 5
+	correctAnswer: 5,
+	finished: 0
 },
 {
 	question: "What is 5*2?",
 	choices: [2,5,10,15],
-	correctAnswer: 10
+	correctAnswer: 10,
+	finished: 0
 },
 {
 	question: "What is 5*3?",
 	choices: [2,5,10,15],
-	correctAnswer: 15
+	correctAnswer: 15,
+	finished: 0
 }
 ];
 // which question number we are on
@@ -44,7 +47,10 @@ var timerobj = {
 };
 //what happens when we are on a question
 function currentQ(){
-	i = qcounter
+//random question generator!
+ 	num = Math.floor(Math.random()*questions.length);
+ 	var i = num;
+ 	console.log(i);
 	$("#question").text(questions[i].question);
 	$("#a").text(questions[i].choices[0]);
 	$("#b").text(questions[i].choices[1]);
