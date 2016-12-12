@@ -3,21 +3,22 @@ var questions = [{
 	question: "What is 1*5?",
 	choices: [2,5,10,15],
 	correctAnswer: 5,
-	finished: false
+	finish: 0
 },
 {
 	question: "What is 5*2?",
 	choices: [2,5,10,15],
 	correctAnswer: 10,
-	finished: false
+	finish: 1
 },
 {
 	question: "What is 5*3?",
 	choices: [2,5,10,15],
 	correctAnswer: 15,
-	finished: false
+	finish: 2
 }
 ];
+var finished =[];
 //random question generator!
 
 var	num ;
@@ -89,21 +90,20 @@ $("#startButton").on("click", function(){
 	currentQ();
 	timerobj.start();
 });
-$("#nextButton").on("click", function(event){
-	if (questions[i].finished == true){
-		console.log("already answered this one!")
-		event.preventDefault();
-		currentQ();
 
-	}else{
-			console.log(i);
+$("#nextButton").on("click", function(event){
+	if (finished.indexOf(questions[i].finish) === 0){
+	console.log(i);
 	$("#nextButton").hide();
 	timerobj.reset();
 	timerobj.start();
 //figure out where to place this so that the q counter function does not show up early
 	qcounter++
 	currentQ();
-
+	}else{
+		console.log("already answered this one!")
+		event.preventDefault();
+		currentQ();
 	};
 
 //final results
@@ -117,16 +117,16 @@ if (qcounter > questions.length){
 $(".choice").on("click", function(event){
 	var input = $(this).text().trim();
 		console.log(input);
-	console.log(questions[qcounter].correctAnswer);
+	console.log(questions[i].correctAnswer);
 	if(""+input+"" !== ""+ questions[i].correctAnswer +""){
 		console.log("FAIL");
 			timerobj.stop();
-			questions[i].finished = true;
+			finished.push(questions[i].finish);
 			$("#nextButton").show();
 	}else{
 		console.log("beepboop");
 				timerobj.stop();
-				questions[i].finished = true;
+			finished.push(questions[i].finish);
 				$("#nextButton").show();
 	}
 });
