@@ -91,7 +91,8 @@ $("#startButton").on("click", function(){
 	timerobj.start();
 });
 $("#nextButton").on("click", function(event){
-	if (finished.indexOf(questions[i].finish) !== 0){
+	var current  = questions[i].finish
+	if (finished.indexOf(current) === -1){
 	console.log(i);
 	$("#nextButton").hide();
 	timerobj.reset();
@@ -99,12 +100,14 @@ $("#nextButton").on("click", function(event){
 //figure out where to place this so that the q counter function does not show up early
 	qcounter++
 	currentQ();
+
+
 	}else{
-				console.log("already answered this one!")
+				
+
+		console.log("already answered this one!")
 		event.preventDefault();
 		currentQ();
-
-
 	};
 
 //final results
