@@ -56,6 +56,8 @@ var timerobj = {
 function currentQ(){
 		num = Math.floor(Math.random()*questions.length);
 		i = num;
+	$("#incorrect").hide();
+	$("#correct").hide();
 
 	$("#question").text(questions[i].question);
 	$("#a").text(questions[i].choices[0]);
@@ -87,10 +89,13 @@ $(document).ready(function(){
 	$("#nextButton").hide();
 	$("#finalScore").hide();
 	$("#resetButton").hide();
+	$("#incorrect").hide();
+	$("#correct").hide();
 });
 
 $("#startButton").on("click", function(){
 // Now let's get the show on the road!
+	$("#startButton").hide();
 	$("#timer1").show();
 	$("#timer2").show();
 	$("#question").show();
@@ -132,11 +137,33 @@ $(".choice").on("click", function(event){
 	if(""+input+"" !== ""+ questions[i].correctAnswer +""){
 		console.log("FAIL");
 			timerobj.stop();
+			$("#timer1").hide();
+			$("#timer2").hide();
+			$("#question").hide();
+			$("#a").hide();
+			$("#b").hide();
+			$("#c").hide();
+			$("#d").hide();
+			$("#finalScore").hide();
+			$("#resetButton").hide();
+			$("#incorrect").show();
+			$("#incorrect").html("<h1>Incorrect. The Answer Was Actually:" + questions[i].correctAnswer+ "</h1>")
 			finished.push(questions[i].finish);
 			$("#nextButton").show();
 	}else{
 		console.log("beepboop");
 				timerobj.stop();
+			$("#timer1").hide();
+			$("#timer2").hide();
+			$("#question").hide();
+			$("#a").hide();
+			$("#b").hide();
+			$("#c").hide();
+			$("#d").hide();
+			$("#finalScore").hide();
+			$("#resetButton").hide();
+			$("#correct").show();
+			$("#correct").html("<h1>Correct!</h1>")
 			finished.push(questions[i].finish);
 				$("#nextButton").show();
 	}
