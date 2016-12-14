@@ -18,6 +18,7 @@ var questions = [{
 	finish: 2
 }
 ];
+var notAnswered = [];
 var finished =[];
 //random question generator!
 
@@ -65,6 +66,16 @@ function currentQ(){
 };
 // when the document is ready!
 $(document).ready(function(){
+	//This is for another time. I think this will fix the next button issue but I need to think about this more
+	// push everything into not answered array
+	// get the value from randomly picked from the not answered array
+	// push that into finished aray
+	// remove used value into not answered array
+	// rinse and repeat
+	for (i = 0; i<questions.length; i++) {
+		notAnswered.push(questions[i].finish);
+	}
+	console.log(notAnswered)
 // Hiding all the elements from the get go! Don't want them to see the questions
 	$("#timer1").hide();
 	$("#timer2").hide();
@@ -100,11 +111,7 @@ $("#nextButton").on("click", function(event){
 //figure out where to place this so that the q counter function does not show up early
 	qcounter++
 	currentQ();
-
-
 	}else{
-				
-
 		console.log("already answered this one!")
 		event.preventDefault();
 		currentQ();
