@@ -161,6 +161,7 @@ $("#nextButton").on("click", function(){
 	timerobj.start();
 //figure out where to place this so that the q counter function does not show up early
 	qcounter++
+	console.log(qcounter);
 	currentQ();
 	}else if (finished.indexOf(questions[num].finish) > -1){
 		console.log(finished.indexOf(questions[num].finish))
@@ -169,13 +170,6 @@ $("#nextButton").on("click", function(){
 		generateQ();
 		
 	};
-
-//final results
-if (qcounter > questions.length){
-	$("#finalScore").show();
-	$("#resetButton").show();
-};
-});
 //registering if correct or incorrect; made it dry! Got an idea from christian (use class and this!!)
 
 $(".choice").on("click", function(event){
@@ -222,3 +216,9 @@ $(".choice").on("click", function(event){
       timerobj.stop();
       
     });
+//final results
+if (qcounter > questions.length){
+	$("#finalScore").show();
+	$("#resetButton").show();
+};
+});
