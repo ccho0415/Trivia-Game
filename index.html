@@ -2,54 +2,88 @@
 <html>
 <head>
 	<title>Trivia Game!</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 </head>
 <body>
-<div id = "title">
-Trivia!
+<div class = "container">
+<div class = "jumbotron" id = "title">
+<h1 class= "text-center">Trivia!</h1>
 </div>
-<div id = "startButton">
-<button>Start</button>
 </div>
-<div id = "timer1">
+<div class = "container">
+<div class = "col-md-offset-4 col-md-4" id = "startButton">
+<button type = "button" class = "btn btn-primary">Start</button>
+</div>
+</div>
+<div class = "container">
+<div class = "text-center" id = "timer1">
 Timer:
 </div>
-<div id = "timer2">
+</div>
+<div class = "container">
+<div class = "text-center" id = "timer2">
 ARE
 </div>
-<div id = "question">
+</div>
+<div class="container">
+<div class = "text-center" id = "question">
 Question
 </div>
-<div class = "choice" id = "a">
+</div>
+<div class="container">
+<div class = "text-center choice" id = "a">
 A
 </div>
-<div class = "choice" id = "b">
+</div>
+<div class = "container">
+<div class = "text-center choice" id = "b">
 B
 </div>
-<div class = "choice" id = "c">
+</div>
+<div class= "container">
+<div class = "text-center choice" id = "c">
 C
 </div>
-<div class = "choice" id = "d">
+</div>
+<div class= "container">
+<div class = "text-center choice" id = "d">
 D
 </div>
-<div id = "nextButton">
+</div>
+<div class= "container">
+<div class = "text-center" id = "nextButton">
 <button>Next</button>
 </div>
-<div id = "correct">
+</div>
+<div class = "container">
+<div class = "text-center" id = "correct">
 Correct!
 </div>
-<div id = "incorrect">
+</div>
+<div class = "container">
+<div class = "text-center" id = "incorrect">
 Incorrect. The Answer Was Actually: 
 </div>
-<div id = "ranout"> You Ran Out of Time: The Answer was Actually: </div>
-<div id = "finalScore">
-LOVE
 </div>
-<div id = "timetest">
+<div class = "container">
+<div class = "text-center" id = "ranout"> You Ran Out of Time: The Answer was Actually: 
+</div>
+</div>
+<div class = "container">
+<div class = "text-center" id = "finalScore">
+Final Score
+</div>
+</div>
+<div class = "container">
+<div class = "text-center" id = "timetest">
 <button>I NEED A PEE BREAK</button>
 </div>
-<div id ="resetButton">
+</div>
+<div class = "container">
+<div class = "text-center" id ="resetButton">
 <button>Reset</button>
+</div>
 </div>
 </body>
 <script type="text/javascript" src = "assets/game.js"></script>
